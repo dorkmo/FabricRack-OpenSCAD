@@ -14,6 +14,7 @@ z = Z+ZP;
 
 //Variables
 w=16; //distance between uprights
+W=24; //feet width
 h=76; //total height of upright
 a=81; //angle of racks
 dU=(X/2)-(D*2); //nominal depth of upright
@@ -29,7 +30,36 @@ $fn=36; //circle definition
 
 //add an option for display mode or ct mode
 
+translate([dU+0.25,0.25,0])
+mirror([1,0,0])
 Upright();
+
+translate([X-dU,0.25,0])
+Upright();
+
+translate([(X/2)-(W/2),Y,0])
+mirror([0,1,0])
+FootBig();
+
+translate([(X/2)-(W/2),Y-(g*2)-1,0])
+mirror([0,1,0])
+FootSmall();
+
+module FootBig(){
+    hull(){
+    cube([W,g,Z]);
+    translate([(W-(w+2))/2,g,0])    
+    cube([w+2,g,Z]);
+    }
+}
+
+module FootSmall(){
+    hull(){
+    cube([W,g/2,Z]);
+    translate([(W-(w+2))/2,g/2,0])    
+    cube([w+2,g/2,Z]);
+    }
+}
 
 module Upright(){
 difference(){
@@ -96,18 +126,3 @@ module RackCut(){
     
 }//end union
 }//end module
-
-/*
-module RackCut(){
-    union(){
-       
-    //inside    
-    cube([d,s,Z]);
-       
-       
-    //outside
-    translate([-dU,0,0])
-    cube([dU,s+t,Z]);
-}//end union
-}
-*/
