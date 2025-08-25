@@ -1,2 +1,2 @@
 # FabricRack-OpenSCAD
-Rack for holding fabric bolts to be cut with CNC machine
+Rack for holding fabric bolts. To be cut with CNC machine.
