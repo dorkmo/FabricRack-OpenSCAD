@@ -286,9 +286,6 @@ module RackCut(){
         translate([t/8,-t/8,0])
         cylinder(h = Z, r = t/8);
         
-        // Tool radius compensation for concave corner
-        toolRadius(0, 0);
-        
     } //end diff of top cut
     
     translate([-dU,-(s+t),0])
