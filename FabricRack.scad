@@ -146,11 +146,13 @@ module Brace(){
     cube([z,Z*2,Z]);       
     
     // Tool radius compensation for concave corners
-    // Side cut corners
-    toolRadius((W/2)-(w/2)-o, 0);
-    toolRadius((W/2)-(w/2)-o, ((h/10)*2)+(3*Z));
-    toolRadius(W-((W/2)-(w/2)-o), 0);
-    toolRadius(W-((W/2)-(w/2)-o), ((h/10)*2)+(3*Z));
+    // Side cuts don't create concave corners - they cut outer material
+    
+    // Missing corners where middle cuts meet side boundaries
+    toolRadius((W/2)-(w/2)-o, Z*3*1.75);
+    toolRadius((W/2)-(w/2)-o, ((h/10)*2)+(3*Z)-(Z*3*1.75));
+    toolRadius((W/2)+(w/2)+o, Z*3*1.75);
+    toolRadius((W/2)+(w/2)+o, ((h/10)*2)+(3*Z)-(Z*3*1.75));
     
     // Bottom slot corners (only internal corners)
     toolRadius((W/2)+(w/2), Z*2);
