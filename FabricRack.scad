@@ -10,11 +10,11 @@ Z = 0.75;
 D = 0.25; //cutting tool Dia
 DP= 0.0625;
 ZP= 0.0625; //buffer
-z = Z+ZP;
+z = Z+ZP;  //to cut for inserting perpendicular attachments
 
 //Variables
 w=16; //distance between uprights
-W=24; //feet width
+W=23.5; //feet width
 h=76; //total height of upright
 a=81; //angle of racks
 dU=(X/2)-(D*2); //nominal depth of upright
@@ -25,6 +25,7 @@ t=1.5; //verical thickness of rack arms
 T=.75; //vertical thickness at tip
 
 g=4; //height off ground to first rack
+o=1.5; //distrance from upright to outside of brace
 
 $fn=36; //circle definition
 
@@ -45,20 +46,89 @@ translate([(X/2)-(W/2),Y-(g*2)-1,0])
 mirror([0,1,0])
 FootSmall();
 
+translate([(X/2)-(W/2),Y-(g*2)-1-g-1,0])
+mirror([0,1,0])
+Brace();
+
+translate([X,Y,0])
+BraceLock();
+
 module FootBig(){
+    difference(){
     hull(){
     cube([W,g,Z]);
     translate([(W-(w+2))/2,g,0])    
     cube([w+2,g,Z]);
-    }
-}
+    } //end hull
+    
+    translate([(W/2)+(w/2),2*g,0])
+    mirror([0,1,0])
+    mirror([1,0,0])
+    cube([z,g,Z]);
+    
+    translate([(W/2)-(w/2),2*g,0])
+    mirror([0,1,0])
+    cube([z,g,Z]);
+    
+}//end dif
+}//end FootBig
 
 module FootSmall(){
+    difference(){
     hull(){
     cube([W,g/2,Z]);
     translate([(W-(w+2))/2,g/2,0])    
     cube([w+2,g/2,Z]);
-    }
+    }//end hull
+        
+    translate([(W/2)+(w/2),g,0])
+    mirror([0,1,0])
+    mirror([1,0,0])
+    cube([z,g/2,Z]);
+    
+    translate([(W/2)-(w/2),g,0])
+    mirror([0,1,0])
+    cube([z,g/2,Z]);
+        
+    }//end dif
+}//end FootSmall
+
+module Brace(){
+    difference(){
+    cube([W,((h/10)*2)+(3*Z),Z]);
+        
+    cube([(W/2)-(w/2)-o,((h/10)*2)+(3*Z),Z]); //cut off side
+    
+    translate([W,0,0])   
+    mirror([1,0,0])
+    cube([(W/2)-(w/2)-o,((h/10)*2)+(3*Z),Z]);  //cut off side   
+    
+    translate([(W/2)+(w/2),0,0])
+    mirror([1,0,0])
+    cube([z,Z*2,Z]);
+    translate([(W/2)-(w/2),0,0])
+    cube([z,Z*2,Z]);
+        
+    translate([(W/2)-(w/2)+z,Z*3*1.75,0])
+    mirror([1,0,0])
+    cube([z+o,(((h/10)*2)+(3*Z))-(Z*3*1.75*2),Z]);
+    translate([(W/2)+(w/2)-z,Z*3*1.75,0])
+    cube([z+o,(((h/10)*2)+(3*Z))-(Z*3*1.75*2),Z]);
+
+    translate([(W/2)+(w/2),(((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
+    mirror([1,0,0])
+    cube([z,Z*2,Z]);
+    translate([(W/2)-(w/2),(((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
+    cube([z,Z*2,Z]);       
+    
+    }//end difference    
+} //end Brace
+
+module BraceLock(){
+   difference(){
+   cube ([Z*6,((6*Z)-(Z*3*1.75))*2,Z]); 
+   cube ([(Z*6)-o,((6*Z)-(Z*3*1.75)),Z]);
+}
 }
 
 module Upright(){
@@ -72,9 +142,9 @@ cube([dU,h,Z]);
     cube([z,g,Z]);
     //brace cuts
     translate([dU-(3*Z),(h/10)*4,0])
-    cube([z,3*Z,Z]);
+    cube([z,6*Z,Z]);
     translate([dU-(3*Z),(h/10)*6,0])
-    cube([z,3*Z,Z]);
+    cube([z,6*Z,Z]);
    
     //start rack cuts
     rotate([0,0,a-90])
