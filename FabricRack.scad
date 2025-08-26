@@ -77,17 +77,13 @@ module FootBig(){
     cube([z,g,Z]);
     
     // Tool radius compensation for concave corners
-    // Right slot corners
+    // Right slot corners (only internal corners)
     toolRadius((W/2)+(w/2), g);
     toolRadius((W/2)+(w/2)-z, g);
-    toolRadius((W/2)+(w/2), 2*g);
-    toolRadius((W/2)+(w/2)-z, 2*g);
     
-    // Left slot corners  
+    // Left slot corners (only internal corners)
     toolRadius((W/2)-(w/2), g);
     toolRadius((W/2)-(w/2)+z, g);
-    toolRadius((W/2)-(w/2), 2*g);
-    toolRadius((W/2)-(w/2)+z, 2*g);
     
 }//end dif
 }//end FootBig
@@ -110,17 +106,13 @@ module FootSmall(){
     cube([z,g/2,Z]);
     
     // Tool radius compensation for concave corners
-    // Right slot corners
+    // Right slot corners (only internal corners)
     toolRadius((W/2)+(w/2), g/2);
     toolRadius((W/2)+(w/2)-z, g/2);
-    toolRadius((W/2)+(w/2), g);
-    toolRadius((W/2)+(w/2)-z, g);
     
-    // Left slot corners
+    // Left slot corners (only internal corners)
     toolRadius((W/2)-(w/2), g/2);
     toolRadius((W/2)-(w/2)+z, g/2);
-    toolRadius((W/2)-(w/2), g);
-    toolRadius((W/2)-(w/2)+z, g);
         
     }//end dif
 }//end FootSmall
@@ -160,13 +152,9 @@ module Brace(){
     toolRadius(W-((W/2)-(w/2)-o), 0);
     toolRadius(W-((W/2)-(w/2)-o), ((h/10)*2)+(3*Z));
     
-    // Bottom slot corners
-    toolRadius((W/2)+(w/2), 0);
-    toolRadius((W/2)+(w/2)-z, 0);
+    // Bottom slot corners (only internal corners)
     toolRadius((W/2)+(w/2), Z*2);
     toolRadius((W/2)+(w/2)-z, Z*2);
-    toolRadius((W/2)-(w/2), 0);
-    toolRadius((W/2)-(w/2)+z, 0);
     toolRadius((W/2)-(w/2), Z*2);
     toolRadius((W/2)-(w/2)+z, Z*2);
     
@@ -180,15 +168,11 @@ module Brace(){
     toolRadius((W/2)+(w/2)-z, ((h/10)*2)+(3*Z)-(Z*3*1.75));
     toolRadius((W/2)+(w/2), ((h/10)*2)+(3*Z)-(Z*3*1.75));
     
-    // Top slot corners
+    // Top slot corners (only internal corners)
     toolRadius((W/2)+(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
     toolRadius((W/2)+(w/2)-z, (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
-    toolRadius((W/2)+(w/2), ((h/10)*2)+(3*Z));
-    toolRadius((W/2)+(w/2)-z, ((h/10)*2)+(3*Z));
     toolRadius((W/2)-(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
     toolRadius((W/2)-(w/2)+z, (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
-    toolRadius((W/2)-(w/2), ((h/10)*2)+(3*Z));
-    toolRadius((W/2)-(w/2)+z, ((h/10)*2)+(3*Z));
     
     }//end difference    
 } //end Brace
@@ -201,8 +185,6 @@ module BraceLock(){
    // Tool radius compensation for concave corners
    toolRadius((Z*6)-o, 0);
    toolRadius((Z*6)-o, ((6*Z)-(Z*3*1.75)));
-   toolRadius(0, 0);
-   toolRadius(0, ((6*Z)-(Z*3*1.75)));
 }
 }
 
@@ -230,15 +212,11 @@ for(i=[1:round(h/(s+t))])
     RackCut();
    
     // Tool radius compensation for concave corners
-    // Front feet cut corners
-    toolRadius(g, 0);
-    toolRadius(g+z, 0);
+    // Front feet cut corners (only internal corners)
     toolRadius(g, g/2);
     toolRadius(g+z, g/2);
     
-    // Back feet cut corners  
-    toolRadius(dU-(2*g), 0);
-    toolRadius(dU-(2*g)+z, 0);
+    // Back feet cut corners (only internal corners)
     toolRadius(dU-(2*g), g);
     toolRadius(dU-(2*g)+z, g);
     
