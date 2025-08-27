@@ -62,14 +62,14 @@ BraceLock();
 } else {
 //arrange modules in assembled positions    
 
-// Left upright - rotated to vertical position
-translate([0, 0, 0])
-rotate([0, -90, 0])
+// Left upright - standing vertically (height along Z-axis)
+translate([0, Z, 0])
+rotate([-90, 0, 0])
 Upright();
 
-// Right upright - rotated to vertical position  
-translate([w, 0, dU])
-rotate([0, -90, 0])
+// Right upright - standing vertically (height along Z-axis)  
+translate([w, Z, 0])
+rotate([-90, 0, 0])
 Upright();
 
 // Big foot at base connecting uprights (back feet cuts)
