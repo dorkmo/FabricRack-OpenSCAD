@@ -64,33 +64,33 @@ BraceLock();
 
 // Left upright - standing vertically (height along Z-axis)
 translate([0, Z, 0])
-rotate([-90, 0, 0])
+rotate([90, 0, 0])
 Upright();
 
 // Right upright - standing vertically (height along Z-axis)  
 translate([w, Z, 0])
-rotate([-90, 0, 0])
+rotate([90, 0, 0])
 Upright();
 
-// Big foot at base connecting uprights (back feet cuts)
-translate([-(W-w)/2, dU-(2*g)-g, 0])
-FootBig();
-
-// Small foot at front connecting uprights (front feet cuts)  
-translate([-(W-w)/2, g-g/2, 0])
+// Small foot at front connecting uprights (front feet cuts) - positioned lower
+translate([-(W-w)/2, 0, 0])
 FootSmall();
 
+// Big foot at base connecting uprights (back feet cuts) - positioned higher
+translate([-(W-w)/2, 0, g/2])
+FootBig();
+
 // Brace connecting uprights at the brace cut height
-translate([-(W-w)/2, dU-(3*Z), (h/10)*4])
+translate([-(W-w)/2, 0, (h/10)*4])
 rotate([0, 0, 90])
 Brace();
 
-// Brace locks positioned to fit into the brace slots
-translate([(w/2) - (Z*3), dU-(3*Z) + (((h/10)*2)+(3*Z))/2, (h/10)*4])
+// Brace locks positioned to fit into the brace slots  
+translate([(w/2) - (Z*3), ((((h/10)*2)+(3*Z))/2), (h/10)*4])
 rotate([0, 0, 90])
 BraceLock();
 
-translate([(w/2) + (Z*3), dU-(3*Z) + (((h/10)*2)+(3*Z))/2, (h/10)*4])
+translate([(w/2) + (Z*3), ((((h/10)*2)+(3*Z))/2), (h/10)*4])
 rotate([0, 0, 90])
 mirror([1, 0, 0])
 BraceLock();
