@@ -150,8 +150,8 @@ module Brace(){
     // Bottom slot corners (internal corners only)
     toolRadius((W/2)+(w/2)-z, Z*2);
     toolRadius((W/2)-(w/2)+z, Z*2);
-    toolRadius((W/2)-(w/2), Z*3*1.75);
-    toolRadius((W/2)+(w/2), Z*3*1.75);
+    toolRadius((W/2)-(w/2), Z*2);
+    toolRadius((W/2)+(w/2), Z*2);
     
     // Middle cut corners (internal corners)
     toolRadius((W/2)-(w/2)+z, Z*3*1.75);
