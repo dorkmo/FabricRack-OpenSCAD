@@ -67,24 +67,24 @@ translate([0, 0, 0])
 rotate([90, 0, 0])
 Upright();
 
-// Right upright - standing vertically (height along Z-axis), spaced w=16 apart  
-translate([w, 0, 0])
+// Right upright - standing vertically (height along Z-axis), spaced w=16 apart along Y-axis  
+translate([0, w, 0])
 rotate([90, 0, 0])
 Upright();
 
 // Small foot connecting to front feet cuts (at x=g=4 in each upright)
 translate([g - (w+2*z)/2, 0, 0])
-rotate([0, 0, 90])
+rotate([0, 90, 90])
 FootSmall();
 
 // Big foot connecting to back feet cuts (at x=dU-(2*g)=15.5 in each upright)  
 translate([dU-(2*g) - (w+2*z)/2, 0, 0])
-rotate([0, 0, 90])
+rotate([0, 90, 90])
 FootBig();
 
 // Brace connecting to brace cuts (at x=dU-(3*Z)=21.75 in each upright)
 translate([dU-(3*Z) - (w+2*z)/2, 0, (h/10)*4])
-rotate([0, 0, 90])
+rotate([0, 90, 90])
 Brace();
 
 // Brace locks positioned to fit into the brace slots  
