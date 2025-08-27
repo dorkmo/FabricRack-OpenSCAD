@@ -30,12 +30,8 @@ o=1.5; //distrance from upright to outside of brace
 $fn=36; //circle definition
 
 //add an option for display mode or ct mode
-
-// Helper module for cutting tool radius compensation at concave corners
-module toolRadius(x, y, z=Z) {
-    translate([x, y, 0])
-    cylinder(h = z, r = D/2);
-}
+C=1; //1 = arrange for CNC cutting. 0 = arrange for display assembled rack
+if(C==1){
 
 translate([dU+0.25,0.25,0])
 mirror([1,0,0])
@@ -56,8 +52,24 @@ translate([(X/2)-(W/2),Y-(g*2)-1-g-1,0])
 mirror([0,1,0])
 Brace();
 
-translate([X,Y,0])
+translate([(X/2)+0.5,Y-(g*2)-1-g-1-(((h/10)*2)+(3*Z))-1-1,0])
 BraceLock();
+
+translate([(X/2)-0.5,Y-(g*2)-1-g-1-(((h/10)*2)+(3*Z))-1-1,0])
+mirror([1,0,0])
+BraceLock();
+
+} else {
+//arrange modules in assembled positions    
+    
+}
+
+// Helper module for cutting tool radius compensation at concave corners
+module toolRadius(x, y, z=Z) {
+    translate([x, y, 0])
+    cylinder(h = z, r = D/2);
+}
+
 
 module FootBig(){
     difference(){
