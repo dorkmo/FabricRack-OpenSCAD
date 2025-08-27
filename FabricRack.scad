@@ -172,7 +172,6 @@ module BraceLock(){
    cube ([(Z*6)-o,((6*Z)-(Z*3*1.75)),Z]);
    
    // Tool radius compensation for concave corners (semicircular cuts)
-   toolRadius((Z*6)-o, 0 + D/2);
    toolRadius((Z*6)-o, ((6*Z)-(Z*3*1.75)) - D/2);
 }
 }
