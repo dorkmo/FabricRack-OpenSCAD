@@ -156,12 +156,12 @@ module Brace(){
     // Middle cut corners (internal corners)
     toolRadius((W/2)-(w/2)+z, Z*3*1.75);
     toolRadius((W/2)+(w/2)-z, Z*3*1.75);
-    toolRadius((W/2)-(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
-    toolRadius((W/2)+(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
     
     // Top slot corners (internal corners only)
     toolRadius((W/2)-(w/2)+z, (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2));
     toolRadius((W/2)+(w/2)-z, (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2));
+    toolRadius((W/2)-(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2));
+    toolRadius((W/2)+(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2));
     
     }//end difference    
 } //end Brace
