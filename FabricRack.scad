@@ -61,6 +61,39 @@ BraceLock();
 
 } else {
 //arrange modules in assembled positions    
+
+// Left upright - rotated to vertical position
+translate([0, 0, 0])
+rotate([0, -90, 0])
+Upright();
+
+// Right upright - rotated to vertical position  
+translate([w, 0, dU])
+rotate([0, -90, 0])
+Upright();
+
+// Big foot at base connecting uprights (back feet cuts)
+translate([-(W-w)/2, dU-(2*g)-g, 0])
+FootBig();
+
+// Small foot at front connecting uprights (front feet cuts)  
+translate([-(W-w)/2, g-g/2, 0])
+FootSmall();
+
+// Brace connecting uprights at the brace cut height
+translate([-(W-w)/2, dU-(3*Z), (h/10)*4])
+rotate([0, 0, 90])
+Brace();
+
+// Brace locks positioned to fit into the brace slots
+translate([(w/2) - (Z*3), dU-(3*Z) + (((h/10)*2)+(3*Z))/2, (h/10)*4])
+rotate([0, 0, 90])
+BraceLock();
+
+translate([(w/2) + (Z*3), dU-(3*Z) + (((h/10)*2)+(3*Z))/2, (h/10)*4])
+rotate([0, 0, 90])
+mirror([1, 0, 0])
+BraceLock();
     
 }
 
