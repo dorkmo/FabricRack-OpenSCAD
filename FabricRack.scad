@@ -147,11 +147,11 @@ module Brace(){
     
     // Tool radius compensation for concave corners only (semicircular cuts)
     
-    // Bottom slot corners (internal corners only) - shifted by D/2 upward for semicircular cuts
-    toolRadius((W/2)+(w/2)-z, Z*2 + D/2);
-    toolRadius((W/2)-(w/2)+z, Z*2 + D/2);
-    toolRadius((W/2)-(w/2), Z*2 + D/2);
-    toolRadius((W/2)+(w/2), Z*2 + D/2);
+    // Bottom slot corners (internal corners only) - shifted by D/2 downward for semicircular cuts
+    toolRadius((W/2)+(w/2)-z, Z*2 - D/2);
+    toolRadius((W/2)-(w/2)+z, Z*2 - D/2);
+    toolRadius((W/2)-(w/2), Z*2 - D/2);
+    toolRadius((W/2)+(w/2), Z*2 - D/2);
     
     // Middle cut corners (internal corners) - shifted by D/2 horizontally for semicircular cuts
     toolRadius((W/2)-(w/2)+z - D/2, Z*3*1.75);
@@ -172,8 +172,8 @@ module BraceLock(){
    cube ([(Z*6)-o,((6*Z)-(Z*3*1.75)),Z]);
    
    // Tool radius compensation for concave corners (semicircular cuts)
-   toolRadius((Z*6)-o, 0 - D/2);
-   toolRadius((Z*6)-o, ((6*Z)-(Z*3*1.75)) + D/2);
+   toolRadius((Z*6)-o, 0 + D/2);
+   toolRadius((Z*6)-o, ((6*Z)-(Z*3*1.75)) - D/2);
 }
 }
 
@@ -210,14 +210,14 @@ for(i=[1:round(h/(s+t))])
     toolRadius(dU-(2*g)+z, g - D/2);
     
     // Brace cut corners - shifted by D/2 vertically for semicircular cuts
-    toolRadius(dU-(3*Z), (h/10)*4 - D/2);
-    toolRadius(dU-(3*Z)+z, (h/10)*4 - D/2);
-    toolRadius(dU-(3*Z), (h/10)*4+6*Z + D/2);
-    toolRadius(dU-(3*Z)+z, (h/10)*4+6*Z + D/2);
-    toolRadius(dU-(3*Z), (h/10)*6 - D/2);
-    toolRadius(dU-(3*Z)+z, (h/10)*6 - D/2);
-    toolRadius(dU-(3*Z), (h/10)*6+6*Z + D/2);
-    toolRadius(dU-(3*Z)+z, (h/10)*6+6*Z + D/2);
+    toolRadius(dU-(3*Z), (h/10)*4 + D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*4 + D/2);
+    toolRadius(dU-(3*Z), (h/10)*4+6*Z - D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*4+6*Z - D/2);
+    toolRadius(dU-(3*Z), (h/10)*6 + D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*6 + D/2);
+    toolRadius(dU-(3*Z), (h/10)*6+6*Z - D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*6+6*Z - D/2);
    
 }//end difference
 }
