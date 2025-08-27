@@ -145,32 +145,21 @@ module Brace(){
     translate([(W/2)-(w/2),(((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
     cube([z,Z*2,Z]);       
     
-    // Tool radius compensation for concave corners
-    // Side cuts don't create concave corners - they cut outer material
+    // Tool radius compensation for concave corners only
     
-    // Missing corners where middle cuts meet side boundaries
-    toolRadius((W/2)-(w/2)-o, Z*3*1.75);
-    toolRadius((W/2)-(w/2)-o, ((h/10)*2)+(3*Z)-(Z*3*1.75));
-    toolRadius((W/2)+(w/2)+o, Z*3*1.75);
-    toolRadius((W/2)+(w/2)+o, ((h/10)*2)+(3*Z)-(Z*3*1.75));
-    
-    // Bottom slot corners (only internal corners)
+    // Bottom slot corners (internal corners only)
     toolRadius((W/2)+(w/2), Z*2);
     toolRadius((W/2)+(w/2)-z, Z*2);
     toolRadius((W/2)-(w/2), Z*2);
     toolRadius((W/2)-(w/2)+z, Z*2);
     
-    // Middle cut corners
+    // Middle cut corners (bottom edge only - internal corners)
     toolRadius((W/2)-(w/2)+z, Z*3*1.75);
     toolRadius((W/2)-(w/2), Z*3*1.75);
-    toolRadius((W/2)-(w/2)+z, ((h/10)*2)+(3*Z)-(Z*3*1.75));
-    toolRadius((W/2)-(w/2), ((h/10)*2)+(3*Z)-(Z*3*1.75));
     toolRadius((W/2)+(w/2)-z, Z*3*1.75);
     toolRadius((W/2)+(w/2), Z*3*1.75);
-    toolRadius((W/2)+(w/2)-z, ((h/10)*2)+(3*Z)-(Z*3*1.75));
-    toolRadius((W/2)+(w/2), ((h/10)*2)+(3*Z)-(Z*3*1.75));
     
-    // Top slot corners (only internal corners)
+    // Top slot corners (internal corners only)
     toolRadius((W/2)+(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
     toolRadius((W/2)+(w/2)-z, (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
     toolRadius((W/2)-(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75));
