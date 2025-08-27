@@ -31,6 +31,12 @@ $fn=36; //circle definition
 
 //add an option for display mode or ct mode
 
+// Helper module for cutting tool radius compensation at concave corners
+module toolRadius(x, y, z=Z) {
+    translate([x, y, 0])
+    cylinder(h = z, r = D/2);
+}
+
 translate([dU+0.25,0.25,0])
 mirror([1,0,0])
 Upright();
@@ -70,6 +76,15 @@ module FootBig(){
     mirror([0,1,0])
     cube([z,g,Z]);
     
+    // Tool radius compensation for concave corners (semicircular cuts)
+    // Right slot corners (only internal corners) - shifted by D/2 upward for semicircular cuts
+    toolRadius((W/2)+(w/2), g + D/2);
+    toolRadius((W/2)+(w/2)-z, g + D/2);
+    
+    // Left slot corners (only internal corners) - shifted by D/2 upward for semicircular cuts
+    toolRadius((W/2)-(w/2), g + D/2);
+    toolRadius((W/2)-(w/2)+z, g + D/2);
+    
 }//end dif
 }//end FootBig
 
@@ -89,6 +104,15 @@ module FootSmall(){
     translate([(W/2)-(w/2),g,0])
     mirror([0,1,0])
     cube([z,g/2,Z]);
+    
+    // Tool radius compensation for concave corners (semicircular cuts)
+    // Right slot corners (only internal corners) - shifted by D/2 upward for semicircular cuts
+    toolRadius((W/2)+(w/2), g/2 + D/2);
+    toolRadius((W/2)+(w/2)-z, g/2 + D/2);
+    
+    // Left slot corners (only internal corners) - shifted by D/2 upward for semicircular cuts
+    toolRadius((W/2)-(w/2), g/2 + D/2);
+    toolRadius((W/2)-(w/2)+z, g/2 + D/2);
         
     }//end dif
 }//end FootSmall
@@ -121,6 +145,24 @@ module Brace(){
     translate([(W/2)-(w/2),(((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
     cube([z,Z*2,Z]);       
     
+    // Tool radius compensation for concave corners only (semicircular cuts)
+    
+    // Bottom slot corners (internal corners only) - shifted by D/2 downward for semicircular cuts
+    toolRadius((W/2)+(w/2)-z, Z*2 - D/2);
+    toolRadius((W/2)-(w/2)+z, Z*2 - D/2);
+    toolRadius((W/2)-(w/2), Z*2 - D/2);
+    toolRadius((W/2)+(w/2), Z*2 - D/2);
+    
+    // Middle cut corners (internal corners) - shifted by D/2 horizontally for semicircular cuts
+    toolRadius((W/2)-(w/2)+z - D/2, Z*3*1.75);
+    toolRadius((W/2)+(w/2)-z + D/2, Z*3*1.75);
+    
+    // Top slot corners (internal corners only) - shifted by D/2 downward for semicircular cuts
+    toolRadius((W/2)-(w/2)+z, (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    toolRadius((W/2)+(w/2)-z, (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    toolRadius((W/2)-(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    toolRadius((W/2)+(w/2), (((h/10)*2)+(3*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    
     }//end difference    
 } //end Brace
 
@@ -128,6 +170,9 @@ module BraceLock(){
    difference(){
    cube ([Z*6,((6*Z)-(Z*3*1.75))*2,Z]); 
    cube ([(Z*6)-o,((6*Z)-(Z*3*1.75)),Z]);
+   
+   // Tool radius compensation for concave corners (semicircular cuts)
+   toolRadius((Z*6)-o, ((6*Z)-(Z*3*1.75)) - D/2);
 }
 }
 
@@ -154,6 +199,24 @@ for(i=[1:round(h/(s+t))])
     translate([0,i*(s+t),0])
     RackCut();
    
+    // Tool radius compensation for concave corners (semicircular cuts)
+    // Front feet cut corners (only internal corners) - shifted by D/2 downward for semicircular cuts
+    toolRadius(g, g/2 - D/2);
+    toolRadius(g+z, g/2 - D/2);
+    
+    // Back feet cut corners (only internal corners) - shifted by D/2 downward for semicircular cuts
+    toolRadius(dU-(2*g), g - D/2);
+    toolRadius(dU-(2*g)+z, g - D/2);
+    
+    // Brace cut corners - shifted by D/2 vertically for semicircular cuts
+    toolRadius(dU-(3*Z), (h/10)*4 + D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*4 + D/2);
+    toolRadius(dU-(3*Z), (h/10)*4+6*Z - D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*4+6*Z - D/2);
+    toolRadius(dU-(3*Z), (h/10)*6 + D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*6 + D/2);
+    toolRadius(dU-(3*Z), (h/10)*6+6*Z - D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*6+6*Z - D/2);
    
 }//end difference
 }
