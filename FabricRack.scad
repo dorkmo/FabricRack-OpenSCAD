@@ -52,10 +52,10 @@ translate([(X/2)-(W/2),Y-1.25-3*g,0])
 mirror([0,1,0])
 Brace();
 
-translate([(X/2)-(W/2)+((W/2)+0.5),Y-0.25-3*g,0])
+translate([(X/2)-(W/2)+((W/2)+0.5),Y-0.25-3*g-((h/10)*2)-(8*Z),0])
 BraceLock();
 
-translate([(X/2)-(W/2)+((W/2)-0.5),Y-0.25-3*g,0])
+translate([(X/2)-(W/2)+((W/2)-0.5),Y-0.25-3*g-((h/10)*2)-(8*Z),0])
 mirror([1,0,0])
 BraceLock();
 
