@@ -84,16 +84,16 @@ rotate([90, 0, 90])
 FootBig();
 
 // Brace connecting to brace cuts (at x=dU-(3*Z)=21.75 in each upright)
-translate([dU-(3*Z)-dU/2, -W/2, ((h/10)*4)-(Z*2)])
+translate([dU-(3*Z)-dU/2, -W/2, (h/10)*4])
 rotate([90, 0, 90])
 Brace();
 
 // Brace locks positioned to fit into the brace slots  
-translate([dU-(3*Z)-dU/2, -3, ((h/10)*4)-(Z*2)])
+translate([dU-(3*Z)-dU/2, -3, (h/10)*4])
 rotate([90, 0, 90])
 BraceLock();
 
-translate([dU-(3*Z)-dU/2, 3, ((h/10)*4)-(Z*2)])
+translate([dU-(3*Z)-dU/2, 3, (h/10)*4])
 rotate([90, 0, 90])
 mirror([1, 0, 0])
 BraceLock();
