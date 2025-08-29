@@ -40,22 +40,22 @@ Upright();
 translate([X-dU,0.25,0])
 Upright();
 
-translate([(X/2)-(W/2),Y-0.25-g,0])
+translate([0.25,Y-0.25-g,0])
 mirror([0,1,0])
 FootBig();
 
-translate([(X/2)-(W/2),Y-0.25-(2.5*g)-1,0])
+translate([X-0.25-W,Y-0.25-(2.5*g)-1,0])
 mirror([0,1,0])
 FootSmall();
 
-translate([(X/2)-(W/2),Y-0.25-(((h/10)*2)+(8*Z)),0])
+translate([0.25,Y-1.25,0])
 mirror([0,1,0])
 Brace();
 
-translate([(X/2)+0.5,Y-0.25-(((h/10)*2)+(8*Z))-(((h/10)*2)+(8*Z))+1,0])
+translate([0.25+((W/2)+0.5),Y-1.25-(((h/10)*2)+(8*Z))-1,0])
 BraceLock();
 
-translate([(X/2)-0.5,Y-0.25-(((h/10)*2)+(8*Z))-(((h/10)*2)+(8*Z))+1,0])
+translate([0.25+((W/2)-0.5),Y-1.25-(((h/10)*2)+(8*Z))-1,0])
 mirror([1,0,0])
 BraceLock();
 
