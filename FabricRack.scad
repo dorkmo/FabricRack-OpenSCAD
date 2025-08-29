@@ -62,29 +62,29 @@ BraceLock();
 } else {
 //arrange modules in assembled positions    
 
-// Left upright - standing vertically (height along Z-axis), centered along both X and Y axes
+// Left upright - standing vertically (height along Z-axis), centered along both X and Y axes, mirrored to align cuts
 translate([-dU/2, -w/2, 0])
-rotate([90, 0, 0])
-Upright();
-
-// Right upright - standing vertically (height along Z-axis), centered along both X and Y axes, mirrored to align cuts
-translate([-dU/2, w/2, 0])
 rotate([90, 0, 0])
 mirror([0, 0, 1])
 Upright();
 
+// Right upright - standing vertically (height along Z-axis), centered along both X and Y axes
+translate([-dU/2, w/2, 0])
+rotate([90, 0, 0])
+Upright();
+
 // Small foot connecting to front feet cuts (at x=g=4 in each upright)
-translate([g-dU/2, 0, 0])
+translate([g-dU/2, -W/2, 0])
 rotate([90, 0, 90])
 FootSmall();
 
 // Big foot connecting to back feet cuts (at x=dU-(2*g)=15.5 in each upright)  
-translate([dU-(2*g)-dU/2, 0, 0])
+translate([dU-(2*g)-dU/2, -W/2, 0])
 rotate([90, 0, 90])
 FootBig();
 
 // Brace connecting to brace cuts (at x=dU-(3*Z)=21.75 in each upright)
-translate([dU-(3*Z)-dU/2, 0, (h/10)*4])
+translate([dU-(3*Z)-dU/2, -W/2, (h/10)*4])
 rotate([90, 0, 90])
 Brace();
 
