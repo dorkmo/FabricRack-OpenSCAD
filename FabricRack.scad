@@ -52,10 +52,10 @@ translate([(X/2)-(W/2),Y-(g*2)-1-g-1,0])
 mirror([0,1,0])
 Brace();
 
-translate([(X/2)+0.5,Y-(g*2)-1-g-1-(((h/10)*2)+(6*Z))-1-1,0])
+translate([(X/2)+0.5,Y-(g*2)-1-g-1-(((h/10)*2)+(5*Z))-1-1,0])
 BraceLock();
 
-translate([(X/2)-0.5,Y-(g*2)-1-g-1-(((h/10)*2)+(6*Z))-1-1,0])
+translate([(X/2)-0.5,Y-(g*2)-1-g-1-(((h/10)*2)+(5*Z))-1-1,0])
 mirror([1,0,0])
 BraceLock();
 
@@ -84,16 +84,16 @@ rotate([90, 0, 90])
 FootBig();
 
 // Brace connecting to brace cuts (at x=dU-(3*Z)=21.75 in each upright)
-translate([dU-(3*Z)-dU/2, -W/2, (h/10)*4])
+translate([dU-(3*Z)-dU/2, -W/2, ((h/10)*4)-(Z*2)])
 rotate([90, 0, 90])
 Brace();
 
 // Brace locks positioned to fit into the brace slots  
-translate([dU-(3*Z)-dU/2, -3, (h/10)*4])
+translate([dU-(3*Z)-dU/2, -3, ((h/10)*4)-(Z*2)])
 rotate([90, 0, 90])
 BraceLock();
 
-translate([dU-(3*Z)-dU/2, 3, (h/10)*4])
+translate([dU-(3*Z)-dU/2, 3, ((h/10)*4)-(Z*2)])
 rotate([90, 0, 90])
 mirror([1, 0, 0])
 BraceLock();
@@ -167,13 +167,13 @@ module FootSmall(){
 
 module Brace(){
     difference(){
-    cube([W,((h/10)*2)+(6*Z),Z]);
+    cube([W,((h/10)*2)+(5*Z),Z]);
         
-    cube([(W/2)-(w/2)-o,((h/10)*2)+(6*Z),Z]); //cut off side
+    cube([(W/2)-(w/2)-o,((h/10)*2)+(5*Z),Z]); //cut off side
     
     translate([W,0,0])   
     mirror([1,0,0])
-    cube([(W/2)-(w/2)-o,((h/10)*2)+(6*Z),Z]);  //cut off side
+    cube([(W/2)-(w/2)-o,((h/10)*2)+(5*Z),Z]);  //cut off side
     
     translate([(W/2)+(w/2),0,0])
     mirror([1,0,0])
@@ -183,14 +183,14 @@ module Brace(){
         
     translate([(W/2)-(w/2)+z,Z*3*1.75,0])
     mirror([1,0,0])
-    cube([z+o,(((h/10)*2)+(6*Z))-(Z*3*1.75*2),Z]);
+    cube([z+o,(((h/10)*2)+(5*Z))-(Z*3*1.75*2),Z]);
     translate([(W/2)+(w/2)-z,Z*3*1.75,0])
-    cube([z+o,(((h/10)*2)+(6*Z))-(Z*3*1.75*2),Z]);
+    cube([z+o,(((h/10)*2)+(5*Z))-(Z*3*1.75*2),Z]);
 
-    translate([(W/2)+(w/2),(((h/10)*2)+(6*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
+    translate([(W/2)+(w/2),(((h/10)*2)+(5*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
     mirror([1,0,0])
     cube([z,Z*2,Z]);
-    translate([(W/2)-(w/2),(((h/10)*2)+(6*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
+    translate([(W/2)-(w/2),(((h/10)*2)+(5*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
     cube([z,Z*2,Z]);
     
     // Tool radius compensation for concave corners only (semicircular cuts)
@@ -206,10 +206,10 @@ module Brace(){
     toolRadius((W/2)+(w/2)-z + D/2, Z*3*1.75);
     
     // Top slot corners (internal corners only) - shifted by D/2 downward for semicircular cuts
-    toolRadius((W/2)-(w/2)+z, (((h/10)*2)+(6*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
-    toolRadius((W/2)+(w/2)-z, (((h/10)*2)+(6*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
-    toolRadius((W/2)-(w/2), (((h/10)*2)+(6*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
-    toolRadius((W/2)+(w/2), (((h/10)*2)+(6*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    toolRadius((W/2)-(w/2)+z, (((h/10)*2)+(5*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    toolRadius((W/2)+(w/2)-z, (((h/10)*2)+(5*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    toolRadius((W/2)-(w/2), (((h/10)*2)+(5*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
+    toolRadius((W/2)+(w/2), (((h/10)*2)+(5*Z))-(Z*3*1.75*2)+(Z*3*1.75)+(Z*2) - D/2);
     
     }//end difference    
 } //end Brace
