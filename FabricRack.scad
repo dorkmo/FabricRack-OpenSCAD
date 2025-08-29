@@ -236,7 +236,7 @@ cube([dU,h,Z]);
     //brace cuts
     translate([dU-(3*Z),(h/10)*4,0])
     cube([z,6*Z,Z]);
-    translate([dU-(3*Z),(h/10)*6,0])
+    translate([dU-(3*Z),(h/10)*6.2,0])
     cube([z,6*Z,Z]);
    
     //start rack cuts
@@ -261,10 +261,10 @@ for(i=[1:round(h/(s+t))])
     toolRadius(dU-(3*Z)+z, (h/10)*4 + D/2);
     toolRadius(dU-(3*Z), (h/10)*4+6*Z - D/2);
     toolRadius(dU-(3*Z)+z, (h/10)*4+6*Z - D/2);
-    toolRadius(dU-(3*Z), (h/10)*6 + D/2);
-    toolRadius(dU-(3*Z)+z, (h/10)*6 + D/2);
-    toolRadius(dU-(3*Z), (h/10)*6+6*Z - D/2);
-    toolRadius(dU-(3*Z)+z, (h/10)*6+6*Z - D/2);
+    toolRadius(dU-(3*Z), (h/10)*6.2 + D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*6.2 + D/2);
+    toolRadius(dU-(3*Z), (h/10)*6.2+6*Z - D/2);
+    toolRadius(dU-(3*Z)+z, (h/10)*6.2+6*Z - D/2);
    
 }//end difference
 }
