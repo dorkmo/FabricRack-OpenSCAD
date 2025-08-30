@@ -91,11 +91,11 @@ rotate([90, 0, 90])
 Brace();
 
 // Brace locks positioned on top of the brace and through brace hole cuts  
-translate([dU-(3*Z)-dU/2, -(w/2+o+Z*2), (h/10)*4-(Z*2)+Z+((h/10)*2)+(8*Z)+(4.5*Z)])
+translate([dU-(3*Z)-dU/2, -(w/2)+o+Z*2, (h/10)*4-(Z*2)+Z+((h/10)*2)+(8*Z)+(4.5*Z)])
 rotate([90, 180, 90])
 BraceLock();
 
-translate([dU-(3*Z)-dU/2, (w/2+o+Z*2), (h/10)*4-(Z*2)+Z+((h/10)*2)+(8*Z)+(4.5*Z)])
+translate([dU-(3*Z)-dU/2, (w/2)-o-Z*2, (h/10)*4-(Z*2)+Z+((h/10)*2)+(8*Z)+(4.5*Z)])
 rotate([90, 180, 90])
 mirror([1, 0, 0])
 BraceLock();
