@@ -13,6 +13,7 @@ ZP= 0.0625; //buffer
 z = Z+ZP;  //to cut for inserting perpendicular attachments
 
 //Variables
+R=14; //user override total number of racks
 w=16; //distance between uprights
 W=23.5; //feet width
 h=76; //total height of upright
@@ -240,6 +241,11 @@ cube([dU,h,Z]);
     cube([z,6*Z,Z]);
     translate([dU-(3*Z),(h/10)*4+(((h/10)*2)+(8*Z))-(Z*3*1.75*2)+(Z*3*1.75),0])
     cube([z,6*Z,Z]);
+    
+    //top cut for override
+    rotate([0,0,a-90])
+    translate([-X,R*(s+t)-t-(s/8),0])
+    cube([X*2,Y,Z]);
    
     //start rack cuts
     rotate([0,0,a-90])
