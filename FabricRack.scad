@@ -221,7 +221,9 @@ module BraceLock(){
    difference(){
    cube ([Z*6,((8*Z)-(Z*3*1.75))*2,Z]); 
    cube ([(Z*6)-o,((8*Z)-(Z*3*1.75)),Z]);
-   
+   translate([0,(((8*Z)-(Z*3*1.75))*2)-ZP,0])
+   cube([Z*6,(((8*Z)-(Z*3*1.75))*2)-ZP,Z]);
+
    // Tool radius compensation for concave corners (semicircular cuts)
    toolRadius((Z*6)-o, ((8*Z)-(Z*3*1.75)) - D/2);
 }
@@ -315,3 +317,4 @@ module RackCut(){
     
 }//end union
 }//end module
+
