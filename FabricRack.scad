@@ -11,6 +11,7 @@ D = 0.25; //cutting tool Dia
 DP= 0.0625;
 ZP= 0.0625; //buffer
 z = Z+ZP;  //to cut for inserting perpendicular attachments
+DE = D*2;  //distance from board edge
 
 //Variables
 R=14; //user override total number of racks
@@ -34,36 +35,36 @@ $fn=36; //circle definition
 C=1; //1 = arrange for CNC cutting. 0 = arrange for display assembled rack
 if(C==1){
 
-translate([dU+0.25,0.25,0])
+translate([dU+DE,DE,0])
 projection()
 mirror([1,0,0])
 Upright();
 
-translate([X-dU,0.25,0])
+translate([X-dU-DE,DE,0])
 projection()
 Upright();
 
-translate([0.25,Y-0.25-g,0])
+translate([DE,Y-DE,0])
 projection()
 mirror([0,1,0])
 FootBig();
 
-translate([X-0.25-W,Y-0.25-g,0])
+translate([X-DE-W,Y-DE,0])
 projection()
 mirror([0,1,0])
 FootSmall();
 
-translate([(X/2)-(W/2),Y-1.25-3*g,0])
+translate([(X/2)-(W/2),Y-DE-(2*g)-1,0])
 projection()
 mirror([0,1,0])
 Brace();
 
-translate([(X/2)-(W/2)+((W/2)+0.5),Y-1.25-3*g-(((h/10)*2)+(8*Z))-1,0])
+translate([(X/2)-(W/2)+((W/2)+0.5),Y-DE-1-(2*g)-(((h/10)*2)+(8*Z))-1,0])
 projection()
 mirror([0,1,0])
 BraceLock();
 
-translate([(X/2)-(W/2)+((W/2)-0.5),Y-1.25-3*g-(((h/10)*2)+(8*Z))-1,0])
+translate([(X/2)-(W/2)+((W/2)-0.5),Y-DE-1-(2*g)-(((h/10)*2)+(8*Z))-1,0])
 projection()
 mirror([0,1,0])
 mirror([1,0,0])
@@ -324,4 +325,5 @@ module RackCut(){
     
 }//end union
 }//end module
+
 
