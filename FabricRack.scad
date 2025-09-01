@@ -297,7 +297,7 @@ module RackCut(){
             cube([d-(s/8),t*(2/3),Z]);
             translate([d-(s/8),s+(t*(2/3)),0])
             resize([(d-(s/8))*2,(t*(2/3))*2,Z])
-            cylinder(h = Z, r = t*(2/3));
+            cylinder(h = Z, r = t*(2/3), $fn=72);
         }//end dif
         
         //main shelf cut
@@ -325,6 +325,7 @@ module RackCut(){
     
 }//end union
 }//end module
+
 
 
 
