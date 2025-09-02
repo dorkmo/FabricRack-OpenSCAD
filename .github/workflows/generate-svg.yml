@@ -30,6 +30,7 @@ jobs:
           openscad -D C=1 -o cnc-layout.svg FabricRack.scad
 
       - name: Commit generated SVG
+        if: github.event_name == 'push'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
