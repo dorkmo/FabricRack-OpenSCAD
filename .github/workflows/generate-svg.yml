@@ -39,3 +39,4 @@ jobs:
           else
             git commit -m "Update CNC layout SVG [skip ci]"
             git push
+          fi
