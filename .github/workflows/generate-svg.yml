@@ -1,0 +1,41 @@
+---
+name: Generate SVG Layout
+
+on:
+  push:
+    branches: [main]
+    paths: ['FabricRack.scad']
+  pull_request:
+    branches: [main]
+    paths: ['FabricRack.scad']
+  workflow_dispatch:
+
+jobs:
+  generate-svg:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install OpenSCAD
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openscad
+
+      - name: Generate SVG
+        run: |
+          openscad -o cnc-layout.svg FabricRack.scad
+
+      - name: Commit generated SVG
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add cnc-layout.svg
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update CNC layout SVG [skip ci]"
+            git push
