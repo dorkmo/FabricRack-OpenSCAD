@@ -18,7 +18,7 @@ R=14; //user override total number of racks
 w=16; //distance between uprights
 W=23; //feet width
 h=76; //total height of upright
-a=81; //angle of racks
+a=81.25; //angle of racks
 dU=(X/2)-(D*5); //nominal depth of upright
 
 d=10; //depth of each rack
@@ -325,6 +325,7 @@ module RackCut(){
     
 }//end union
 }//end module
+
 
 
 
