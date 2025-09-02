@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate SVG
         run: |
-          openscad -o cnc-layout.svg FabricRack.scad
+          openscad -D C=1 -o cnc-layout.svg FabricRack.scad
 
       - name: Commit generated SVG
         run: |
