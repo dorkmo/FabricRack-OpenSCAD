@@ -27,7 +27,21 @@ jobs:
 
       - name: Generate DXF
         run: |
+          set -e
           openscad -D C=1 -o cnc-layout.dxf FabricRack.scad
+          
+          # Verify the DXF file exists and has content
+          if [ ! -f "cnc-layout.dxf" ]; then
+            echo "Error: DXF file was not generated"
+            exit 1
+          fi
+          
+          if [ ! -s "cnc-layout.dxf" ]; then
+            echo "Error: DXF file is empty"
+            exit 1
+          fi
+          
+          echo "DXF file generated successfully ($(wc -c < cnc-layout.dxf) bytes)"
 
       - name: Commit generated DXF
         if: github.event_name == 'push'
