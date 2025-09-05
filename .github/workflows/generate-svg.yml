@@ -10,6 +10,9 @@ on:
     paths: ['FabricRack.scad']
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   generate-svg:
     runs-on: ubuntu-latest
