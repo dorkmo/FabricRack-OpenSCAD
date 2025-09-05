@@ -27,7 +27,21 @@ jobs:
 
       - name: Generate SVG
         run: |
+          set -e
           openscad -D C=1 -o cnc-layout.svg FabricRack.scad
+          
+          # Verify the SVG file exists and has content
+          if [ ! -f "cnc-layout.svg" ]; then
+            echo "Error: SVG file was not generated"
+            exit 1
+          fi
+          
+          if [ ! -s "cnc-layout.svg" ]; then
+            echo "Error: SVG file is empty"
+            exit 1
+          fi
+          
+          echo "SVG file generated successfully ($(wc -c < cnc-layout.svg) bytes)"
 
       - name: Commit generated SVG
         if: github.event_name == 'push'
