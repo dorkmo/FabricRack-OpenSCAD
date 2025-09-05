@@ -1,5 +1,5 @@
 ---
-name: Generate SVG Layout
+name: Generate DXF Layout
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate-svg:
+  generate-dxf:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,33 +25,33 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y openscad
 
-      - name: Generate SVG
+      - name: Generate DXF
         run: |
           set -e
-          openscad -D C=1 -o cnc-layout.svg FabricRack.scad
+          openscad -D C=1 -o cnc-layout.dxf FabricRack.scad
           
-          # Verify the SVG file exists and has content
-          if [ ! -f "cnc-layout.svg" ]; then
-            echo "Error: SVG file was not generated"
+          # Verify the DXF file exists and has content
+          if [ ! -f "cnc-layout.dxf" ]; then
+            echo "Error: DXF file was not generated"
             exit 1
           fi
           
-          if [ ! -s "cnc-layout.svg" ]; then
-            echo "Error: SVG file is empty"
+          if [ ! -s "cnc-layout.dxf" ]; then
+            echo "Error: DXF file is empty"
             exit 1
           fi
           
-          echo "SVG file generated successfully ($(wc -c < cnc-layout.svg) bytes)"
+          echo "DXF file generated successfully ($(wc -c < cnc-layout.dxf) bytes)"
 
-      - name: Commit generated SVG
+      - name: Commit generated DXF
         if: github.event_name == 'push'
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add cnc-layout.svg
+          git add cnc-layout.dxf
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Update CNC layout SVG [skip ci]"
+            git commit -m "Update CNC layout DXF [skip ci]"
             git push
           fi

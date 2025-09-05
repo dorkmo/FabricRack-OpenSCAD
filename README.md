@@ -3,6 +3,7 @@ Rack for holding fabric bolts. To be cut with CNC machine.
 
 ## CNC Cutting Layout
 
-The following SVG shows the layout of all parts arranged for CNC cutting:
+The layout of all parts arranged for CNC cutting is available in multiple formats:
 
-![CNC Layout](cnc-layout.svg)
+- **SVG**: ![CNC Layout](cnc-layout.svg)
+- **DXF**: [cnc-layout.dxf](cnc-layout.dxf) (Generated automatically via GitHub Actions)
